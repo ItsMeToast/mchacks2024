@@ -1,4 +1,6 @@
 from PIL import Image,ImageDraw,ImageFont
+import os
+
 
 def add_text(draw, text, font, text_x, text_y):
     border_width = 4
@@ -6,6 +8,7 @@ def add_text(draw, text, font, text_x, text_y):
         for j in range(-border_width, border_width + 1):
             draw.text((text_x + i, text_y + j), text, fill="black", font=font)
     draw.text((text_x, text_y), text, fill="white", font=font)
+
 
 def do_top_text(draw, image, text, font):
     text_width = draw.textlength(text, font=font)
@@ -27,18 +30,31 @@ def do_bottom_text(draw, image, text, font, font_size):
 
 
 def call():
-    img = Image.open("Image_created_with_a_mobile_phone.png")
-    draw = ImageDraw.Draw(img)
+    
+    directory = 'image-resources'
+    i = 0
 
-    font_size = 148
-    font = ImageFont.truetype("impact.ttf", font_size)
+    for filename in os.listdir(directory):
+        f = os.path.join(directory, filename)
+        if (os.path.isfile(f) and filename[-4:] == (".png")):
+            #print(f)
+            img = Image.open(f)
+            draw = ImageDraw.Draw(img)
 
-    top_text = "Bottom text"
-    bottom_text = "real bottom text"
+            top_text = "Bottom Text"
+            bottom_text = "real bottom text"
 
-    do_bottom_text(draw, img, bottom_text, font, font_size)
-    do_top_text(draw, img, top_text, font)
+            top_font_size = img.width // len(top_text)
+            bottom_font_size = img.width // len(bottom_text)
+            top_font = ImageFont.truetype("impact.ttf", top_font_size)
+            bottom_font = ImageFont.truetype("impact.ttf", bottom_font_size)
 
-    img.save("text.png")
+
+            do_bottom_text(draw, img, bottom_text, bottom_font, bottom_font_size)
+            do_top_text(draw, img, top_text, top_font)
+
+
+            img.save("image-outputs/text" + str(i)+ ".png")
+            i = i+1
 
 call()
