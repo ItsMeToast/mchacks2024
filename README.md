@@ -1,1 +1,1 @@
-# mchacks2024
+# Meme Generation Project
