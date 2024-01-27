@@ -1,6 +1,10 @@
 from PIL import Image,ImageDraw,ImageFont
 import os
+import requests
+from io import BytesIO
+
 from image_rec_tensorflow_2 import get_image_word 
+
 
 # pip3 install pillow
 
@@ -37,14 +41,43 @@ def do_bottom_text(draw, image, text, font, font_size):
     add_text(draw, text, font, text_x, text_y)
 
 
-def call(top_text, bottom_text, filepath, filename):
+def download_image(image_url):
+    # NOT CURRENTLY USED - if using urls to get images
+    # image_url = "https://example.com/image.jpg"
+
+    # Download  image
+    response = requests.get(image_url)
+    image = Image.open(BytesIO(response.content))
+
+    return image
+
+
+def upload_image(saved_filename):
+    # OPTIONAL - NOT CURRENTLY USED
+
+    upload_url = "https://example.com/upload"
+    files = {'file': open(saved_filename, 'rb')}
+    
+    upload_response = requests.post(upload_url, files=files)
+
+    # The URL of the uploaded image will typically be provided in the response from the server
+    uploaded_image_url = upload_response.json()["url"]
+
+
+def call(top_text, bottom_text, filepath, filename, image_url):
  
-    img = Image.open(filepath)
+    # if image from url, do
+    img = download_image(image_url)
+    # and put the url as a param of this funct
+
+    #img = Image.open(filepath)
     draw = ImageDraw.Draw(img)
 
-    # if import text, change here
-    #top_text = match_name
-    #bottom_text = ""
+    # as to not divide by 0 later
+    if len(top_text) == 0:
+        top_text = " "
+    if len(bottom_text) == 0:
+        bottom_text = " "
 
     # calculating text size and setting it 
     top_font_size = img.width // len(top_text)
@@ -77,8 +110,17 @@ def main():
             call(top_text, bottom_text, f, filename)
             #i = i+1
 
+def main2():
+    url1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ijms-21-05932-g004.webp/440px-Ijms-21-05932-g004.webp.png"
+    url2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Coronavirus._SARS-CoV-2.png/220px-Coronavirus._SARS-CoV-2.png"
+    filepath = "t"
+    filename = "from_wiki"
+
+    match_name = get_image_word(url2)
+
+    call(match_name, "", filepath, filename, url2)
 
 
 # this calls it 
 #call()
-#main()
+#main2()
