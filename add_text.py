@@ -1,5 +1,6 @@
 from PIL import Image,ImageDraw,ImageFont
 import os
+from image_rec_tensorflow_2 import get_image_word 
 
 # pip3 install pillow
 
@@ -36,35 +37,48 @@ def do_bottom_text(draw, image, text, font, font_size):
     add_text(draw, text, font, text_x, text_y)
 
 
-def call():
-    
-    directory = 'image-resources'
-    i = 0
+def call(top_text, bottom_text, filepath, filename):
+ 
+    img = Image.open(filepath)
+    draw = ImageDraw.Draw(img)
 
+    # if import text, change here
+    #top_text = match_name
+    #bottom_text = ""
+
+    # calculating text size and setting it 
+    top_font_size = img.width // len(top_text)
+    bottom_font_size = img.width // len(bottom_text)
+    top_font = ImageFont.truetype("impact.ttf", top_font_size)
+    bottom_font = ImageFont.truetype("impact.ttf", bottom_font_size)
+
+    # putting the text on the image
+    do_bottom_text(draw, img, bottom_text, bottom_font, bottom_font_size)
+    do_top_text(draw, img, top_text, top_font)
+
+    # save the image and continue loop
+    img.save("image-outputs/" + filename[:-4] + ".png")
+    #img.save("image-outputs/" + filename[:-4] + str(i)+ ".png")
+    
+
+def main():
+    directory = 'image-resources'
+    #i = 0
+    
     for filename in os.listdir(directory):
         f = os.path.join(directory, filename)
         if (os.path.isfile(f) and filename[-4:] == (".png")):
 
-            img = Image.open(f)
-            draw = ImageDraw.Draw(img)
+            match_name = get_image_word(f)
+            
+            top_text = match_name
+            bottom_text = " "
 
-            # if import text, change here
-            top_text = "Bottom Text"
-            bottom_text = "real bottom text"
+            call(top_text, bottom_text, f, filename)
+            #i = i+1
 
-            # calculating text size and setting it 
-            top_font_size = img.width // len(top_text)
-            bottom_font_size = img.width // len(bottom_text)
-            top_font = ImageFont.truetype("impact.ttf", top_font_size)
-            bottom_font = ImageFont.truetype("impact.ttf", bottom_font_size)
 
-            # putting the text on the image
-            do_bottom_text(draw, img, bottom_text, bottom_font, bottom_font_size)
-            do_top_text(draw, img, top_text, top_font)
-
-            # save the image and continue loop
-            img.save("image-outputs/" + filename[:-4] + str(i)+ ".png")
-            i = i+1
 
 # this calls it 
-call()
+#call()
+#main()
