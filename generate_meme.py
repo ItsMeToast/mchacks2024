@@ -7,6 +7,7 @@ from deep_fryer_red import deep_fry_red
 def generate_meme(num_images):
     image_urls = refresh_and_save_urls(num_images)
     save_dir = "image-outputs/"
+    # print(image_urls)
 
     for num, url in image_urls.items():
         # Uses OpenAI vision to detect subject of image
@@ -14,12 +15,12 @@ def generate_meme(num_images):
         # Generates funny caption based on subject of image
         fry_level, text = generate_funny_phrase(match_name)
 
-        img = deep_fry_red(url, int(fry_level))
+        img = deep_fry_red(url, fry_level)
         img = call(text, img)
 
         img.save(save_dir + str(num) + ".png")
 
-        return img
+    return img
 
 
 generate_meme(2)

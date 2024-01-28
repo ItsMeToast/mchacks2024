@@ -45,10 +45,10 @@ def detect_image(url):
 def generate_funny_phrase(prompt):
     prompt_list = [
         "Generate a 5 word reddit meme caption about ",
-        "Make a short joke about ",
+        "Make a short one line joke about ",
         "Make a 5 word twitter meme about ",
         "Tell me a 5 word joke about ",
-        "Tell me something funny about ",
+        "Tell me a funny one liner about ",
         "Make a 5 word instagram meme caption about ",
         "Make a 5 word wholesome joke about ",
     ]
