@@ -14,21 +14,22 @@ from cloudinary import uploader
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
 app = Flask(__name__)
-cors = CORS(app)
+CORS(app, resources={r"/button_press": {"origins": "http://localhost:3000"}})
 
-cloudinary.config( 
-  cloud_name = "dh9lwlcpo", 
-  api_key = "619834951489553", 
-  api_secret = "jCwaUB81jGUNV8Trnp_svwvyoeA" 
+cloudinary.config(
+    cloud_name="dh9lwlcpo",
+    api_key="619834951489553",
+    api_secret="jCwaUB81jGUNV8Trnp_svwvyoeA",
 )
 
 
-@app.route('/button_press', methods=['POST'])
+@app.route("/button_press", methods=["POST"])
 def handle_button_press():
     data = request.json  # Assuming JSON data is sent in the request body
     # Call the handler function with the data received from the frontend
     response = handler(data)
     return jsonify(response)
+
 
 def handler(data):
     # Your handler logic here
@@ -48,27 +49,27 @@ def handler(data):
         img = deep_fry_red(url, fry_level)
         img = call(text, img)
 
-        #img.save(save_dir + str(num) + ".png")
+        # img.save(save_dir + str(num) + ".png")
 
         upload_url = "https://example.com/upload"
         image_bytes = BytesIO()
 
-        img.save(image_bytes, format='PNG')
+        img.save(image_bytes, format="PNG")
         image_bytes.seek(0)
 
         # Upload the image bytes to Cloudinary
         upload_result = uploader.upload(image_bytes, folder="example_folder")
 
         # Access the uploaded image URL
-        uploaded_image_url = upload_result['secure_url']
-        #print("Uploaded image URL:", uploaded_image_url)
-        return {'message': uploaded_image_url}
+        uploaded_image_url = upload_result["secure_url"]
+        # print("Uploaded image URL:", uploaded_image_url)
+        return {"message": uploaded_image_url}
 
-    #return img
-    #return {'message': uploaded_image_url}
+    # return img
+    # return {'message': uploaded_image_url}
+
 
 if __name__ == "__main__":
-
     app.run(host="localhost", port=5000, debug=True)
 
-#app.run(host="localhost", port=5000)
+# app.run(host="localhost", port=5000)

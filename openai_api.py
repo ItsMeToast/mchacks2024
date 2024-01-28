@@ -5,7 +5,7 @@ import random
 
 # Set the OpenAI Key
 def get_key():
-    file = open("/Users/laurenspee/Downloads/apikey.txt", "r")
+    file = open("C:\Kieron\School\McGill\Other\McHacks\openai-key.txt", "r")
     key = file.read()
 
     file.close()
@@ -87,8 +87,8 @@ def generate_funny_phrase(prompt):
         phrase = response.choices[0].message.content
 
         # Check if the generated phrase is a one-liner
-        if '\n' not in phrase:
-            break 
-    
+        if "\n" not in phrase:
+            break
+
     # print(phrase)
     return (fry_level, phrase)

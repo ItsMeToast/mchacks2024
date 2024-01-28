@@ -36,6 +36,12 @@ body {
   background-position: 10%;
 }
 
+.loading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
 .title {
   font-size: 4rem;
   font-weight: bold;
