@@ -49,31 +49,39 @@ body {
   0% {
     background-position: 0% 56%;
   }
+
   50% {
     background-position: 100% 45%;
   }
+
   100% {
     background-position: 0% 56%;
   }
 }
+
 @-moz-keyframes gradientBackground {
   0% {
     background-position: 0% 56%;
   }
+
   50% {
     background-position: 100% 45%;
   }
+
   100% {
     background-position: 0% 56%;
   }
 }
+
 @keyframes gradientBackground {
   0% {
     background-position: 0% 56%;
   }
+
   50% {
     background-position: 100% 45%;
   }
+
   100% {
     background-position: 0% 56%;
   }
@@ -84,31 +92,39 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(720deg);
   }
+
   100% {
     transform: rotate(0deg);
   }
 }
+
 @-moz-keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(720deg);
   }
+
   100% {
     transform: rotate(0deg);
   }
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(720deg);
   }
+
   100% {
     transform: rotate(0deg);
   }

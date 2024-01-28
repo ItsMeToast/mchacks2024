@@ -5,7 +5,7 @@ import random
 
 # Set the OpenAI Key
 def get_key():
-    file = open("C:\Kieron\School\McGill\Other\McHacks\openai-key.txt", "r")
+    file = open("/Users/laurenspee/Downloads/apikey.txt", "r")
     key = file.read()
 
     file.close()
