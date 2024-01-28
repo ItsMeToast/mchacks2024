@@ -22,4 +22,4 @@ def generate_meme(num_images):
         return img
 
 
-generate_meme(1)
+generate_meme(2)
