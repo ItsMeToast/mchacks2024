@@ -41,6 +41,3 @@ def deep_fry_red(image_url, fry_factor=3, orange_factor=6.5, yellow_factor=1.2, 
 
     # Show the enhanced image
     return enhanced_image
-
-
-# Example usage with an image URL

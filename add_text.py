@@ -2,7 +2,6 @@ from PIL import Image,ImageDraw,ImageFont
 import os
 import requests
 from io import BytesIO
-
 from image_rec_tensorflow_2 import get_image_word 
 
 
