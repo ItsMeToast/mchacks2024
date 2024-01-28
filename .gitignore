@@ -2,5 +2,5 @@
 /node_modules/.cache/*
 /node_modules/*
 *.pack
-/node_modules/
-node_modules/.bin/acorn
+node_modules/
+__pycache__/
