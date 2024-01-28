@@ -1,7 +1,7 @@
 from openai_api import generate_funny_phrase, detect_image
 from image_dictionary import refresh_and_save_urls
 from add_text import call
-from deep_fryer2 import orange_yellow_deep_fry_from_url
+from deep_fry_red import deep_fry_red
 
 num_images = 10
 image_urls = refresh_and_save_urls(num_images)
