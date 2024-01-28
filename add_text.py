@@ -62,8 +62,21 @@ def upload_image(saved_filename):
     # The URL of the uploaded image will typically be provided in the response from the server
     uploaded_image_url = upload_response.json()["url"]
 
+def text_splitter(text):
 
-def call(top_text, bottom_text, img):
+    index = len(text)//2
+    for i in range(index,len(text)):
+        if (text[i] == " "):
+            index = i
+            break
+
+    top_text = text[:index]
+    bottom_text = text[index+1:]
+
+    return top_text, bottom_text
+
+
+def call(text, img):
     # leave image url as an empty string if it's not used
 
     #if (image_url == ""):
@@ -73,6 +86,8 @@ def call(top_text, bottom_text, img):
     
     draw = ImageDraw.Draw(img)
 
+    top_text, bottom_text = text_splitter(text)
+
     # as to not divide by 0 later
     if len(top_text) == 0:
         top_text = " "
@@ -80,8 +95,8 @@ def call(top_text, bottom_text, img):
         bottom_text = " "
 
     # calculating text size and setting it 
-    top_font_size = img.width // len(top_text)
-    bottom_font_size = img.width // len(bottom_text)
+    top_font_size = img.width // (len(top_text)*0.75)
+    bottom_font_size = img.width // (len(bottom_text)*0.75)
     top_font = ImageFont.truetype("impact.ttf", top_font_size)
     bottom_font = ImageFont.truetype("impact.ttf", bottom_font_size)
 

@@ -3,6 +3,7 @@ import os
 from image_rec_tensorflow_2 import get_image_word 
 from add_text import call
 from deep_fryer import deep_fry
+from phrase_generator import generate_funny_phrase
 
 
 def main():
@@ -66,12 +67,12 @@ def main4():
     filepath = directory + filename
 
     match_name = get_image_word(filepath)
-    img = deep_fry(filepath)
-    
-    top_text = match_name
-    bottom_text = ""
 
-    img = call(match_name, "", img)
+    text = generate_funny_phrase(match_name)
+
+    img = deep_fry(filepath)
+
+    img = call(text, img)
     img.save(save_dir + filename[:-4] + ".png")
 
     
