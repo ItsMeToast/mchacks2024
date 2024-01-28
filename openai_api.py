@@ -5,7 +5,7 @@ import random
 
 # Set the OpenAI Key
 def get_key():
-    file = open("C:\Kieron\School\McGill\Other\McHacks\openai-key.txt", "r")
+    file = open("/Users/skylargu/Desktop/API_code.txt", "r")
     key = file.read()
 
     file.close()
@@ -38,7 +38,7 @@ def detect_image(url):
         max_tokens=300,
     )
 
-    print(response.choices[0].message.content)
+    # print(response.choices[0].message.content)
     return response.choices[0].message.content
 
 
@@ -54,7 +54,7 @@ def generate_funny_phrase(prompt):
     ]
     rand = random.randint(0, len(prompt_list) - 1)
 
-    print(prompt_list[rand])
+    # print(prompt_list[rand])
 
     response = client.chat.completions.create(
         messages=[
@@ -67,5 +67,5 @@ def generate_funny_phrase(prompt):
     )
 
     phrase = response.choices[0].message.content
-    print(phrase)
-    return (1, phrase)
+    # print(phrase)
+    return (rand, phrase)
