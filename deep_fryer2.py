@@ -30,7 +30,5 @@ def orange_yellow_deep_fry_from_url(image_url, brightness_factor=1.2, orange_fac
     return contrasted_image
 
 # Example usage with an image URL
-image_url = "https://fastly.picsum.photos/id/676/2000/2000.jpg?hmac=rqDv-Ar51q73E4c0euIyMv1-7YYbJcdZ4II7tn6ly7g"
-orange_yellow_deep_fry_from_url(image_url)
 
 
