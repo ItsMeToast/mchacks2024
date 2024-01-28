@@ -4,8 +4,7 @@ import requests
 from io import BytesIO
 
 def deep_fry_red(image_url, fry_factor=3, orange_factor=6.5, yellow_factor=1.2, brightness_factor=1.4, contrast_factor=1.2):
-    bf_reset, of_reset, yf_reset = [1, 1, 1]
-    
+    # deep fries images based on the fry_factor
     if fry_factor == 1:
         brightness_factor, orange_factor, yellow_factor = [1, 1, 1]
     if fry_factor == 2:
