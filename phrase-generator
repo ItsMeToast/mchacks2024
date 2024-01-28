@@ -7,7 +7,6 @@ client = OpenAI(
     api_key = os.environ.get("OPENAI_API_KEY"),
 )
 
-
 def generate_funny_phrase(prompt):
     prompt = prompt
     random_number = str(random.randint(5, 10))
