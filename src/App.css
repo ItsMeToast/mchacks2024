@@ -14,6 +14,16 @@ body {
   width: 100%;
 }
 
+.logo {
+  right: 5rem;
+  top: 2rem;
+}
+
+.logo-img {
+  width: 100px;
+  height: auto;
+}
+
 .button {
   font-size: 2rem;
   font-weight: bold;

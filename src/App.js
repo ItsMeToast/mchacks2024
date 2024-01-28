@@ -13,10 +13,21 @@ function App() {
     "Performing standup comedy...", 
     "Pondering...", 
     "Analyzing human jokes...",
-    "Generic loading screen...",
+    "Generic loading splash...",
     "Procrastinating...",
     "Taking a break...",
-    "Browsing iFunny..."
+    "Browsing iFunny...",
+    "Distracting you...",
+    "Meditating...",
+    "Smelling the flowers...", 
+    "Outsourcing creativity...",
+    "Browsing CollegeHumor...", 
+    "Debating syntax...", 
+    "Watching grass grow...", 
+    "Watching paint dry...",
+    "Folding the dishes...",
+    "Firing on all neurons...",
+    "Losing sleep..."
   ]
 
   useState(() => {
@@ -63,7 +74,11 @@ function App() {
   };
 
   return (
-    <div className="app-container container-fluid text-center flex-column h-100 p-0 pt-2">
+    <div className="app-container container-fluid text-center flex-column h-100 m-0">
+
+    <div className="position-absolute logo" >
+      <img className="logo-img" src='memeify.png'></img>
+    </div>
 
       <div className="title row justify-content-center">Memeify</div>
       <div className="row justify-content-center">
