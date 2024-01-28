@@ -1,7 +1,7 @@
 from openai_api import generate_funny_phrase, detect_image
 from image_dictionary import refresh_and_save_urls
 from add_text import call
-from deep_fry_red import deep_fry_red
+from deep_fryer_red import deep_fry_red
 
 
 def generate_meme(num_images):
