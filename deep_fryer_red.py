@@ -20,8 +20,7 @@ def deep_fry_red(image_url, fry_factor=3, orange_factor=6.5, yellow_factor=1.2, 
         image = Image.open(image_url)
         
     # Convert the image to RGB (if necessary)
-    if image.mode != "RGB":
-        image = image.convert("RGB")
+    image = image.convert("RGB")
         
     # Apply enhancement to the orange and yellow tones
     img_array = np.array(image)
@@ -31,10 +30,9 @@ def deep_fry_red(image_url, fry_factor=3, orange_factor=6.5, yellow_factor=1.2, 
     # Convert the modified array back to an image
     enhanced_image = Image.fromarray(img_array)
 
-    enhancer_b = ImageEnhance.Brightness(enhanced_image)
-    enhancer_c = ImageEnhance.Contrast(enhanced_image)
-    
     if fry_factor != 1:
+        enhancer_b = ImageEnhance.Brightness(enhanced_image)
+        enhancer_c = ImageEnhance.Contrast(enhanced_image)
         enhanced_image = enhancer_b.enhance(brightness_factor)
         enhanced_image = enhancer_c.enhance(contrast_factor)
 
