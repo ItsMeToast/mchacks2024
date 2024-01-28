@@ -4,6 +4,7 @@ from image_rec_tensorflow_2 import get_image_word
 from add_text import call
 from deep_fryer import deep_fry
 from phrase_generator import generate_funny_phrase
+from image_dictionary import refresh_and_save_urls
 
 
 def main():
@@ -75,7 +76,24 @@ def main4():
     img = call(text, img)
     img.save(save_dir + filename[:-4] + ".png")
 
+def main5():
+
+    num_images = 5
+    image_urls = refresh_and_save_urls(num_images) 
+    i = 0
+    save_dir = "image-outputs/"
+
+    for num,url in image_urls.items():
+        
+        match_name = get_image_word(url)
+        text = generate_funny_phrase(match_name)
+
+        img = deep_fry(url)
+        img = call(text, img)
+        
+        img.save(save_dir + "image" + str(i) + ".png")
+        i = i+1
+
     
 
-
-main4()
+main5()

@@ -3,9 +3,17 @@ from openai import OpenAI
 import random
 
 # Set your OpenAI GPT-3 API key
+
+def get_key():
+    file = open("/Users/laurenspee/Downloads/apikey.txt", 'r')
+    key = file.read()
+
+    file.close()
+    return key
+
 client = OpenAI(
     #api_key = os.environ.get("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")
-    api_key = "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"
+    api_key = get_key()
 )
 
 def generate_funny_phrase(prompt):
@@ -15,7 +23,7 @@ def generate_funny_phrase(prompt):
         messages=[
         {
             "role": "user",
-            "content": "Generate a" + random_number + "word meme about" + prompt,
+            "content": "Generate a" + random_number + " word reddit meme about" + prompt,
         }
     ],
     model="gpt-4-0125-preview",
