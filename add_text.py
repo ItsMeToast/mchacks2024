@@ -94,8 +94,8 @@ def call(text, img):
         bottom_text = " "
 
     # calculating text size and setting it 
-    top_font_size = img.width // (len(top_text)*0.75)
-    bottom_font_size = img.width // (len(bottom_text)*0.75)
+    top_font_size = img.width // (len(top_text)*0.5)
+    bottom_font_size = img.width // (len(bottom_text)*0.5)
     top_font = ImageFont.truetype("impact.ttf", top_font_size)
     bottom_font = ImageFont.truetype("impact.ttf", bottom_font_size)
 

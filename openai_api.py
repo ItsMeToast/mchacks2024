@@ -52,7 +52,18 @@ def generate_funny_phrase(prompt):
         "Make a 5 word instagram meme caption about ",
         "Make a 5 word wholesome joke about ",
     ]
-    rand = random.randint(0, len(prompt_list) - 1)
+
+    prompt_list2 = [
+        "Generate a 5 word reddit meme caption about ",
+        "Make a short funny meme about ",
+        "Make a 5 word twitter meme about ",
+        "Tell me a 5 word internet joke about ",
+        "Tell me a twitter-worthy one liner about ",
+        "Make a 5 word discord meme caption about ",
+        "Make a 5 word funny joke about ",
+    ]
+
+    rand = random.randint(0, len(prompt_list2) - 1)
 
     fry_level = 3
     if rand == 6:
@@ -66,7 +77,7 @@ def generate_funny_phrase(prompt):
         messages=[
             {
                 "role": "user",
-                "content": prompt_list[rand] + prompt,
+                "content": prompt_list2[rand] + prompt,
             }
         ],
         model="gpt-4-0125-preview",
