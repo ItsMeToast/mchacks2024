@@ -71,19 +71,24 @@ def generate_funny_phrase(prompt):
     elif rand == 1 or rand == 2 or rand == 4:
         fry_level = 2
 
-    # print(prompt_list[rand])
+    # print(prompt_list2[rand])
 
-    response = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": prompt_list2[rand] + prompt,
-            }
-        ],
-        model="gpt-4-0125-preview",
-    )
+    while True:
+        response = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt_list2[rand] + prompt,
+                }
+            ],
+            model="gpt-4-0125-preview",
+        )
 
-    phrase = response.choices[0].message.content
+        phrase = response.choices[0].message.content
 
+        # Check if the generated phrase is a one-liner
+        if '\n' not in phrase:
+            break 
+    
     # print(phrase)
     return (fry_level, phrase)
