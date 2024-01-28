@@ -3,9 +3,8 @@ from openai import OpenAI
 import random
 
 # Set your OpenAI GPT-3 API key
-key = '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'
 client = OpenAI(
-    api_key=key,
+    api_key = os.environ.get("OPENAI_API_KEY"),
 )
 
 
