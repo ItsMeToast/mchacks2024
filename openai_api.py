@@ -43,29 +43,29 @@ def detect_image(url):
 
 
 def generate_funny_phrase(prompt):
-    prompt = prompt
-    random_number = str(random.randint(5, 10))
+    prompt_list = [
+        "Generate a 5 word reddit meme caption about ",
+        "Make a short joke about ",
+        "Make a 5 word twitter meme about ",
+        "Tell me a 5 word joke about ",
+        "Tell me something funny about ",
+        "Make a 5 word instagram meme caption about ",
+        "Make a 5 word wholesome joke about ",
+    ]
+    rand = random.randint(0, len(prompt_list) - 1)
+
+    print(prompt_list[rand])
+
     response = client.chat.completions.create(
         messages=[
             {
                 "role": "user",
-                "content": "Generate a"
-                + random_number
-                + " word reddit meme about"
-                + prompt,
+                "content": prompt_list[rand] + prompt,
             }
         ],
         model="gpt-4-0125-preview",
     )
+
     phrase = response.choices[0].message.content
-    return phrase
-
-
-# Example Usage:
-# if __name__ == "__main__":
-# Example prompt
-# prompt = "toaster" #make prompt = get_image_word(image_url)
-
-# Generate a funny phrase
-# funny_phrase = generate_funny_phrase(prompt)
-# print("Funny Phrase:", funny_phrase)
+    print(phrase)
+    return (1, phrase)
