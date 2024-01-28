@@ -3,7 +3,7 @@ import numpy as np
 import requests
 from io import BytesIO
 
-def orange_yellow_deep_fry_from_url(image_url, brightness_factor=1.2, orange_factor=7.5, yellow_factor=1.2, contrast_factor=1.2):
+def deep_fry_2(image_url, brightness_factor=1.2, orange_factor=7.5, yellow_factor=1.2, contrast_factor=1.2):
     # Download the image from the URL
     try:
         # Download the image from the URL
@@ -17,7 +17,7 @@ def orange_yellow_deep_fry_from_url(image_url, brightness_factor=1.2, orange_fac
         image = image.convert('RGB')
     
     # Apply enhancement to the orange and yellow tones
-    img_array = np.array(original_image)
+    img_array = np.array(image)
     img_array[:, :, 0] = np.clip(img_array[:, :, 0] * orange_factor, 0, 255)
     img_array[:, :, 1] = np.clip(img_array[:, :, 1] * yellow_factor, 0, 255)
 
