@@ -54,6 +54,12 @@ def generate_funny_phrase(prompt):
     ]
     rand = random.randint(0, len(prompt_list) - 1)
 
+    fry_level = 3
+    if rand == 6:
+        fry_level = 1
+    elif rand == 1 or rand == 2 or rand == 4:
+        fry_level = 2
+    
     # print(prompt_list[rand])
 
     response = client.chat.completions.create(
@@ -67,5 +73,6 @@ def generate_funny_phrase(prompt):
     )
 
     phrase = response.choices[0].message.content
+    
     # print(phrase)
-    return (rand, phrase)
+    return (fry_level, phrase)
