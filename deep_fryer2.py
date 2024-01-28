@@ -5,12 +5,17 @@ from io import BytesIO
 
 def orange_yellow_deep_fry_from_url(image_url, brightness_factor=1.2, orange_factor=7.5, yellow_factor=1.2, contrast_factor=1.2):
     # Download the image from the URL
-    response = requests.get(image_url)
-    original_image = Image.open(BytesIO(response.content))
+    try:
+        # Download the image from the URL
+        response = requests.get(image_url)
+        image = Image.open(BytesIO(response.content))
+    except Exception as e:
+        image = Image.open(image_url)
 
-    # Convert the image to RGB (if it's not already)
-    original_image = original_image.convert('RGB')
-
+    # Convert the image to RGB (if necessary)
+    if image.mode != 'RGB':
+        image = image.convert('RGB')
+    
     # Apply enhancement to the orange and yellow tones
     img_array = np.array(original_image)
     img_array[:, :, 0] = np.clip(img_array[:, :, 0] * orange_factor, 0, 255)
