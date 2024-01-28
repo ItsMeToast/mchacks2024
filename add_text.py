@@ -8,7 +8,6 @@ from image_rec_tensorflow_2 import get_image_word
 
 # pip3 install pillow
 
-
 def add_text(draw, text, font, text_x, text_y):
     border_width = 4
     for i in range(-border_width, border_width + 1):
@@ -64,13 +63,14 @@ def upload_image(saved_filename):
     uploaded_image_url = upload_response.json()["url"]
 
 
-def call(top_text, bottom_text, filepath, filename, image_url):
- 
-    # if image from url, do
-    img = download_image(image_url)
-    # and put the url as a param of this funct
+def call(top_text, bottom_text, img):
+    # leave image url as an empty string if it's not used
 
-    #img = Image.open(filepath)
+    #if (image_url == ""):
+    #    img = Image.open(filepath)
+    #else:
+    #    img = download_image(image_url)
+    
     draw = ImageDraw.Draw(img)
 
     # as to not divide by 0 later
@@ -89,38 +89,10 @@ def call(top_text, bottom_text, filepath, filename, image_url):
     do_bottom_text(draw, img, bottom_text, bottom_font, bottom_font_size)
     do_top_text(draw, img, top_text, top_font)
 
-    # save the image and continue loop
-    img.save("image-outputs/" + filename[:-4] + ".png")
-    #img.save("image-outputs/" + filename[:-4] + str(i)+ ".png")
+    # save the image in a folder
     
-
-def main():
-    directory = 'image-resources'
-    #i = 0
+    return img
     
-    for filename in os.listdir(directory):
-        f = os.path.join(directory, filename)
-        if (os.path.isfile(f) and filename[-4:] == (".png")):
-
-            match_name = get_image_word(f)
-            
-            top_text = match_name
-            bottom_text = " "
-
-            call(top_text, bottom_text, f, filename)
-            #i = i+1
-
-def main2():
-    url1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ijms-21-05932-g004.webp/440px-Ijms-21-05932-g004.webp.png"
-    url2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Coronavirus._SARS-CoV-2.png/220px-Coronavirus._SARS-CoV-2.png"
-    filepath = "t"
-    filename = "from_wiki"
-
-    match_name = get_image_word(url2)
-
-    call(match_name, "", filepath, filename, url2)
-
-
-# this calls it 
-#call()
-#main2()
+    #save_dir = "image-outputs/"
+    #img.save(save_dir + filename[:-4] + ".png")
+    

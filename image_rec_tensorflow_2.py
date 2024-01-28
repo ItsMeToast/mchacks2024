@@ -53,13 +53,21 @@ def get_highest_match(predictions):
 #    return match_name
 
 def get_image_word(image_url):
-    #try:
+    try:
         # Download the image from the URL
-    #    response = requests.get(image_url)
-    #    img = Image.open(BytesIO(response.content))
-    #except Exception as e:
-    #    print(f"Error loading image from URL: {e}")
-    #    return
+        response = requests.get(image_url)
+        img = Image.open(BytesIO(response.content))
+    except Exception as e:
+        # Use the ResNet50 model for classification
+        predictions = classify_image_resnet50(image_url)
+        display_predictions(predictions)
+
+        # Get the category with the highest match
+        highest_match_category = get_highest_match(predictions)
+        match = highest_match_category.split("_")
+        match_name = ' '.join(word.capitalize() for word in match)
+
+        return match_name
 
     response = requests.get(image_url)
     img = Image.open(BytesIO(response.content))
