@@ -5,7 +5,7 @@ import random
 
 # Set the OpenAI Key
 def get_key():
-    file = open("C:\Kieron\School\McGill\Other\McHacks\openai-key.txt", "r")
+    file = open("/Users/skylargu/Desktop/API_code.txt", "r")
     key = file.read()
 
     file.close()
@@ -38,34 +38,41 @@ def detect_image(url):
         max_tokens=300,
     )
 
-    print(response.choices[0].message.content)
+    # print(response.choices[0].message.content)
     return response.choices[0].message.content
 
 
 def generate_funny_phrase(prompt):
-    prompt = prompt
-    random_number = str(random.randint(5, 10))
+    prompt_list = [
+        "Generate a 5 word reddit meme caption about ",
+        "Make a short one line joke about ",
+        "Make a 5 word twitter meme about ",
+        "Tell me a 5 word joke about ",
+        "Tell me a funny one liner about ",
+        "Make a 5 word instagram meme caption about ",
+        "Make a 5 word wholesome joke about ",
+    ]
+    rand = random.randint(0, len(prompt_list) - 1)
+
+    fry_level = 3
+    if rand == 6:
+        fry_level = 1
+    elif rand == 1 or rand == 2 or rand == 4:
+        fry_level = 2
+    
+    # print(prompt_list[rand])
+
     response = client.chat.completions.create(
         messages=[
             {
                 "role": "user",
-                "content": "Generate a"
-                + random_number
-                + " word reddit meme about"
-                + prompt,
+                "content": prompt_list[rand] + prompt,
             }
         ],
         model="gpt-4-0125-preview",
     )
+
     phrase = response.choices[0].message.content
-    return phrase
-
-
-# Example Usage:
-# if __name__ == "__main__":
-# Example prompt
-# prompt = "toaster" #make prompt = get_image_word(image_url)
-
-# Generate a funny phrase
-# funny_phrase = generate_funny_phrase(prompt)
-# print("Funny Phrase:", funny_phrase)
+    
+    # print(phrase)
+    return (fry_level, phrase)
