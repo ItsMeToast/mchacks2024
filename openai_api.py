@@ -5,7 +5,7 @@ import random
 
 # Set the OpenAI Key
 def get_key():
-    file = open("/Users/skylargu/Desktop/API_code.txt", "r")
+    file = open("C:\Kieron\School\McGill\Other\McHacks\openai-key.txt", "r")
     key = file.read()
 
     file.close()
@@ -59,7 +59,7 @@ def generate_funny_phrase(prompt):
         fry_level = 1
     elif rand == 1 or rand == 2 or rand == 4:
         fry_level = 2
-    
+
     # print(prompt_list[rand])
 
     response = client.chat.completions.create(
@@ -73,6 +73,6 @@ def generate_funny_phrase(prompt):
     )
 
     phrase = response.choices[0].message.content
-    
+
     # print(phrase)
     return (fry_level, phrase)

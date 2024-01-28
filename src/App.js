@@ -7,7 +7,7 @@ function App() {
 
   const requestDataFromBackend = () => {
     
-    setMemeList(memeList.concat(<Meme key={memeList.length} />));
+    setMemeList(memeList.concat(<Meme key={memeList.length} url={"https://static.wikia.nocookie.net/villainsfanon/images/4/4e/Troll-Face-Meme-PNG.png"}/>));
 
     console.log("Button click")
 
