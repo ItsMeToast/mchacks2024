@@ -26,9 +26,8 @@ def orange_yellow_deep_fry_from_url(image_url, brightness_factor=1.2, orange_fac
     # Apply contrast enhancement
     enhancer = ImageEnhance.Contrast(enhanced_image)
     contrasted_image = enhancer.enhance(contrast_factor)
-
-    # Show the enhanced image
-    contrasted_image.show()
+    
+    return contrasted_image
 
 # Example usage with an image URL
 image_url = "https://fastly.picsum.photos/id/676/2000/2000.jpg?hmac=rqDv-Ar51q73E4c0euIyMv1-7YYbJcdZ4II7tn6ly7g"
