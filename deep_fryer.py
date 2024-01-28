@@ -17,8 +17,8 @@ def deep_fry(image_url, brightness_factor=1.2, sharpness_factor=2.0, saturation_
         image = image.convert('RGB')
 
     # Increase brightness
-    enhancer = ImageEnhance.Brightness(image)
-    image = enhancer.enhance(brightness_factor)
+    #enhancer = ImageEnhance.Brightness(image)
+    #image = enhancer.enhance(brightness_factor)
 
     # Increase sharpness
     enhancer = ImageEnhance.Sharpness(image)

@@ -1,7 +1,7 @@
 import requests
 
 # Function to refresh the website and save image URLs
-def refresh_and_save_urls(base_url, num_images):
+def refresh_and_save_urls(num_images, base_url='https://picsum.photos/2000'):
     image_dict = {}
 
     for i in range(1, num_images + 1):
@@ -17,8 +17,8 @@ def refresh_and_save_urls(base_url, num_images):
     return image_dict
 
 # Example usage
-base_url = 'https://picsum.photos/2000' # this URL generates square images with dimension 2000
-num_images = 90
+#base_url = 'https://picsum.photos/2000' # this URL generates square images with dimension 2000
+#num_images = 90
 
-image_urls = refresh_and_save_urls(base_url, num_images)
-print(image_urls)
+#image_urls = refresh_and_save_urls(base_url, num_images)
+#print(image_urls)
