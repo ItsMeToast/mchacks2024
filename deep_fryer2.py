@@ -3,7 +3,7 @@ import numpy as np
 import requests
 from io import BytesIO
 
-def deep_fry_2(image_url, brightness_factor=1.2, orange_factor=7.5, yellow_factor=1.2, contrast_factor=1.2):
+def deep_fry_red(image_url, brightness_factor=1.2, orange_factor=7.5, yellow_factor=1.2, contrast_factor=1.2):
     # Download the image from the URL
     try:
         # Download the image from the URL
