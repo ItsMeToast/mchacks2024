@@ -4,7 +4,8 @@ import random
 
 # Set your OpenAI GPT-3 API key
 client = OpenAI(
-    api_key = os.environ.get("OPENAI_API_KEY"),
+    #api_key = os.environ.get("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")
+    api_key = "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"
 )
 
 def generate_funny_phrase(prompt):
@@ -23,10 +24,10 @@ def generate_funny_phrase(prompt):
     return phrase
 
 # Example Usage:
-if __name__ == "__main__":
+#if __name__ == "__main__":
     # Example prompt
-    prompt = "toaster" //make prompt = get_image_word(image_url) 
+    #prompt = "toaster" #make prompt = get_image_word(image_url) 
 
     # Generate a funny phrase
-    funny_phrase = generate_funny_phrase(prompt)
-    print("Funny Phrase:", funny_phrase)
+    #funny_phrase = generate_funny_phrase(prompt)
+    #print("Funny Phrase:", funny_phrase)
